@@ -104,6 +104,7 @@ const Products = () => {
       // console.log(data)
       toast.success(data.message, { id: toastId });
     } catch (error) {
+      console.log(error)
       toast.error(error?.response?.data?.message || "Something went Wrong!", {
         id: toastId,
       });
@@ -154,6 +155,7 @@ const Products = () => {
           fullWidth
           label="Month"
           margin="normal"
+          required
           variant="outlined"
           value={month}
           onChange={(e) => setMonth(e.target.value)}
@@ -161,6 +163,7 @@ const Products = () => {
         <TextField
           fullWidth
           label="Year"
+          required
           margin="normal"
           variant="outlined"
           value={year}
