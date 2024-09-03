@@ -10,9 +10,9 @@ const Products = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [day, setDay] = useState(null);
-  const [month, setMonth] = useState(null);
-  const [year, setYear] = useState(null);
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
   // const [results, setResults] = useState([]);
 
   const getMonthNumber = (monthName) => {
@@ -89,7 +89,6 @@ const Products = () => {
       }
   }
     if (year) payload.year = year;
-    console.log(payload);
 
     try {
       const { data } = await axios.post(
@@ -144,7 +143,7 @@ const Products = () => {
 
   return (
     <Fragment>
-      <Stack direction={"row"} spacing={2} marginTop={3} marginX={3}>
+      <Stack direction={"row"}  spacing={2} marginTop={3} marginX={3}>
         <TextField
           fullWidth
           label="Date"
