@@ -34,7 +34,7 @@ import {
   
       try {
         const { data } = await axios.post(
-          `https://product-tracking-backend.onrender.com/api/v1/products/new`,
+          `http://localhost:5000/api/v1/products/new`,
           {
             productName: productName.value,
             quantity: quantity.value,

@@ -91,7 +91,7 @@ const Products = () => {
 
     try {
       const { data } = await axios.post(
-        "https://product-tracking-backend.onrender.com/api/v1/products/search",
+        "http://localhost:5000/api/v1/products/search",
         payload
       );
       setProducts(
@@ -123,7 +123,7 @@ const Products = () => {
       };
 
       const { data } = await axios.get(
-        `https://product-tracking-backend.onrender.com/api/v1/products/get`,
+        `http://localhost:5000/api/v1/products/get`,
         config
       );
       if (data.success) {
