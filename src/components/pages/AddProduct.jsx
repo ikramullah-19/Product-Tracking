@@ -1,15 +1,14 @@
+import { useInputValidation } from "6pp";
 import {
-    Button,
-    Container,
-    Paper,
-    TextField,
-    Typography
-  } from "@mui/material";
-  import axios from "axios";
-  import {  useInputValidation } from "6pp";
-  import toast from "react-hot-toast";
-  import React, { useState } from "react";
-  import { bgGradient } from "../constants/color.js";
+  Button,
+  Container,
+  Paper,
+  TextField,
+  Typography
+} from "@mui/material";
+import axios from "axios";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
   
   const AddProduct = () => {
   
@@ -55,9 +54,9 @@ import {
   
     return (
       <div
-        style={{
-          backgroundImage: bgGradient,
-        }}
+        // style={{
+        //   backgroundImage: bgGradient,
+        // }}
       >
         <Container
           component={"main"}

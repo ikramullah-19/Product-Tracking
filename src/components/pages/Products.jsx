@@ -1,17 +1,9 @@
-import {
-  Button,
-  Container,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
 import moment from "moment";
 import React, { Fragment, useEffect, useState } from "react";
-import { useInputValidation } from "6pp";
-import Table from "../shared/Table";
 import toast from "react-hot-toast";
+import Table from "../shared/Table";
 
 const Products = () => {
   const [products, setProducts] = useState();
@@ -21,7 +13,7 @@ const Products = () => {
   const [day, setDay] = useState(null);
   const [month, setMonth] = useState(null);
   const [year, setYear] = useState(null);
-  const [results, setResults] = useState([]);
+  // const [results, setResults] = useState([]);
 
   const getMonthNumber = (monthName) => {
     const months = {
@@ -85,9 +77,19 @@ const Products = () => {
 
     // Add only the entered values to the payload
     if (day) payload.day = day;
-    if (month) payload.month = month;
+    if (month) {
+      // Check if the month input is a number or a string
+      const parsedMonth = parseInt(month, 10);
+
+      // If it's a valid number, use it directly. Otherwise, treat it as a month name
+      if (!isNaN(parsedMonth) && parsedMonth >= 1 && parsedMonth <= 12) {
+          payload.month = parsedMonth; // Use the entered month number
+      } else {
+          payload.month = getMonthNumber(month); // Convert month name to number
+      }
+  }
     if (year) payload.year = year;
-    console.log(payload)
+    console.log(payload);
 
     try {
       const { data } = await axios.post(
@@ -104,7 +106,7 @@ const Products = () => {
       // console.log(data)
       toast.success(data.message, { id: toastId });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error(error?.response?.data?.message || "Something went Wrong!", {
         id: toastId,
       });
@@ -175,7 +177,7 @@ const Products = () => {
           }}
           variant="contained"
           fullWidth
-          color="primary"
+          color="success"
           onClick={handleSearch}
           disabled={loading}
         >
